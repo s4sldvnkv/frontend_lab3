@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Верхнее меню</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            position: fixed;  /* Фиксируем меню */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        /* Стили для пунктов меню */
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;    /* Для расположения пунктов в строку */
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 20px;  /* Отступы между пунктами меню */
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        .content {
+            margin-top: 60px;  /* Отступ сверху для видимости контента */
+            padding: 20px;
+        }
+
+        .span_view {
+            display: block;
+            margin: 60px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Каталог</a></li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">О нас</a></li>
+    </ul>
+</div>
+
+<div class="content">
+    <h1>Добро пожаловать на наш сайт!</h1>
+    <p>Здесь будет основной контент страницы.</p>
+    <p>Прокручивайте страницу, и меню останется на месте.</p>
+    <p>Еще немного контента...</p>
+    <p>Продолжайте прокручивать для тестирования...</p>
+    <p>Еще один параграф.</p>
+    <p>И так далее...</p>
+</div>
+
+</body>
+</html>

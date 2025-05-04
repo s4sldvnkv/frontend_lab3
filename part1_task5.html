@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+</head>
+<body>
+
+<h1>Калькулятор</h1>
+
+<input id="result" type="text" disabled />
+
+<br/>
+
+<button onclick="appendNumber('1')">1</button>
+<button onclick="appendNumber('2')">2</button>
+<button onclick="appendNumber('3')">3</button>
+<button onclick="appendOperator('+')">+</button>
+
+<br/>
+
+<button onclick="appendNumber('4')">4</button>
+<button onclick="appendNumber('5')">5</button>
+<button onclick="appendNumber('6')">6</button>
+<button onclick="appendOperator('-')">-</button>
+
+<br/>
+
+<button onclick="appendNumber('7')">7</button>
+<button onclick="appendNumber('8')">8</button>
+<button onclick="appendNumber('9')">9</button>
+<button onclick="appendOperator('*')">*</button>
+
+<br/>
+
+<button onclick="appendNumber('0')">0</button>
+<button onclick="clearInput()">C</button>
+<button onclick="calculateResult()">=</button>
+<button onclick="appendOperator('/')">/</button>
+
+<script>
+    let currentInput = '';
+
+    function updateResult() {
+        document.getElementById('result').value = currentInput;
+    }
+
+    function appendNumber(number) {
+        currentInput += number;
+        updateResult();
+    }
+
+    function appendOperator(operator) {
+        currentInput += ' ' + operator + ' ';
+        updateResult();
+    }
+
+    function clearInput() {
+        currentInput = '';
+        updateResult();
+    }
+
+    function calculateResult() {
+        try {
+            const result = eval(currentInput);
+            currentInput = result.toString();
+        } catch (error) {
+            currentInput = 'Ошибка';
+        }
+        updateResult();
+    }
+</script>
+
+</body>
+</html>

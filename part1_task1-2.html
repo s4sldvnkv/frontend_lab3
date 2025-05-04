@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать!</title>
+    <style>
+        /* Отключение выделения */
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+    <script>
+        // Блокируется контекстное меню (ПКМ)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Блокируется попытки выделения текста
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Блокируется drag'n'drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Блокируется копирование через Ctrl+C или меню
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</head>
+<body>
+<h1><b>Добро пожаловать!</b></h1>
+
+<p><em>Приветствуем</em> <u>вас</u> <b>в нашем</b>
+    <a href="#">магазине</a>!
+</p>
+
+<p>&lt;h1&gt;Теорема Пифагора&lt;/h1&gt;:
+    <i>c</i><sup>2</sup> = <i>a</i><sup>2</sup> + <i>b</i><sup>2</sup>
+</p>
+
+<table border="1" cellspacing="0" cellpadding="10">
+    <tr>
+        <td colspan="2">Информация</td>
+    </tr>
+    <tr>
+        <td>Старая цена: <s>1000 ₽</s></td>
+        <td>Новая цена: 500 ₽</td>
+    </tr>
+</table>
+</body>
+</html>

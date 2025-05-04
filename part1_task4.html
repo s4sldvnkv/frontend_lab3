@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Кликер с таймером</title>
+    <script>
+        let count = parseInt(localStorage.getItem('clickCount')) || 0;
+        let startTime = parseInt(localStorage.getItem('startTime')) || Date.now();
+
+        function updateDisplay() {
+            document.getElementById('counter').textContent = count;
+
+            const currentTime = Date.now();
+            const elapsedSeconds = (currentTime - startTime) / 1000;
+            const average = elapsedSeconds > 0 ? (count / elapsedSeconds).toFixed(2) : 0;
+
+            document.getElementById('avg').textContent = 'Среднее кликов/сек: ' + average;
+        }
+
+        function handleClick() {
+            if (!localStorage.getItem('startTime')) {
+                startTime = Date.now();
+                localStorage.setItem('startTime', startTime.toString());  // Преобразуем в строку
+            }
+
+            count++;
+            localStorage.setItem('clickCount', count.toString());  // Преобразуем в строку
+            updateDisplay();
+        }
+
+        function resetCounter() {
+            // Сбрасываем все данные в localStorage
+            localStorage.removeItem('clickCount');
+            localStorage.removeItem('startTime');
+
+            // Сбрасываем переменные
+            count = 0;
+            startTime = Date.now();
+
+
+            // Обновляем отображение
+            updateDisplay();
+        }
+
+        window.onload = function () {
+            setInterval(updateDisplay, 1000)
+            count = 0;
+            updateDisplay();
+        };
+    </script>
+</head>
+<body>
+
+<h1>Кликер</h1>
+
+<div id="counter">0</div>
+
+<button onclick="handleClick()">Нажми меня!</button>
+
+<div id="avg">Среднее кликов/сек: 0</div>
+
+<button onclick="resetCounter()">Сбросить счетчик</button>
+
+</body>
+</html>

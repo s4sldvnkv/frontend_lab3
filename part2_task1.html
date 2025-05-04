@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать!</title>
+    <style>
+        /* Отключение выделения */
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .colored-text span {
+            font-size: 24px; /* Размер шрифта */
+        }
+
+        .italic {
+            font-style: italic;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .link {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .theorem-title {
+            font-family: "Comic Sans MS", sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Стили для таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #40E0D0; /* Бирюзовый цвет */
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #40E0D0;
+        }
+
+        td {
+            background-color: #40E0D0;
+        }
+    </style>
+    <script>
+        // Блокируется контекстное меню (ПКМ)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Блокируется попытки выделения текста
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Блокируется drag'n'drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Блокируется копирование через Ctrl+C или меню
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+
+        window.onload = function() {
+            const text = "Приветствуем вас в нашем ";
+            const container = document.getElementById("colored-text");
+
+            // Разбиваем строку на отдельные слова
+            const words = text.split(" ");
+
+            words.forEach((word, wordIndex) => {
+                const wordSpan = document.createElement("span");
+
+                if (word === "Приветствуем") {
+                    wordSpan.classList.add("italic");
+                } else if (word === "вас") {
+                    wordSpan.classList.add("underline");
+                } else if (word === "в" || word === "нашем") {
+                    wordSpan.classList.add("bold");
+                } else if (word === "магазине!") {
+                    const link = document.createElement("a");
+                    link.textContent = word;
+                    link.classList.add("link");
+                    wordSpan.appendChild(link);
+                }
+
+                // Разбиваем слово на буквы и добавляем их с нужными цветами
+                Array.from(word).forEach((char, index) => {
+                    const span = document.createElement("span");
+                    span.textContent = char;
+                    // Используем красный для нечетных и синий для четных
+                    span.style.color = (index % 2 === 0) ? "red" : "blue";
+                    wordSpan.appendChild(span);
+                });
+
+                container.appendChild(wordSpan);
+
+                // Добавляем пробел между словами (кроме последнего)
+                if (wordIndex < words.length - 1) {
+                    const space = document.createElement("span");
+                    space.textContent = " ";
+                    container.appendChild(space);
+                }
+            });
+            const link = document.createElement("a");
+            link.textContent = "магазине!";
+            link.classList.add("link");
+            container.appendChild(link);
+        };
+    </script>
+</head>
+<body>
+<h1><b>Добро пожаловать!</b></h1>
+
+<p id="colored-text"> </p>
+
+<p> <span class="theorem-title"> &lt;h1&gt;Теорема Пифагора&lt;/h1&gt; </span>:
+    <i>c</i><sup>2</sup> = <i>a</i><sup>2</sup> + <i>b</i><sup>2</sup>
+</p>
+
+<table>
+    <tr>
+        <th colspan="2">Информация</th>
+    </tr>
+    <tr>
+        <td>Старая цена: <s>1000 ₽</s></td>
+        <td>Новая цена: 500 ₽</td>
+    </tr>
+</table>
+</body>
+</html>

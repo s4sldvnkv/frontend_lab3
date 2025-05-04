@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная страница</title>
+    <style>
+        /* Сначала скрываем все элементы, чтобы только один был видим */
+        .desktop, .tablet, .mobile {
+            display: none;
+        }
+
+        /* Когда ширина окна больше 1024px, отображается Desktop */
+        @media (min-width: 1025px) {
+            .desktop {
+                display: block;
+            }
+        }
+
+        /* Когда ширина окна между 768px и 1024px, отображается Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .tablet {
+                display: block;
+            }
+        }
+
+        /* Когда ширина окна меньше 768px, отображается Mobile */
+        @media (max-width: 768px) {
+            .mobile {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="desktop">Desktop</div>
+<div class="tablet">Tablet</div>
+<div class="mobile">Mobile</div>
+
+</body>
+</html>
